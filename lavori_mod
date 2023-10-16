@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tracciamento Lavori</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tracciamento Lavori</h1>
+    <p>Ultima modifica: <span id="lastModified"></span></p>
+    <table>
+        <tr>
+            <th>N°</th>
+            <th>PRODOTTO</th>
+            <th>X</th>
+            <th>P</th>
+            <th>CLIENTE</th>
+            <th>ESITO</th>
+            <th>DATI MANCANTI</th>
+            <th>NOTA</th>
+            <th>AGGIORNAMENTO</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Forni</td>
+            <td>6</td>
+            <td></td>
+            <td>Tatò</td>
+            <td></td>
+            <td>attesa credenziali</td>
+            <td>FH</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Drone</td>
+            <td></td>
+            <td>Patanè</td>
+            <td></td>
+            <td>ho fatture</td>
+            <td>FH</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        // Funzione per evidenziare le ultime modifiche
+        function highlightLastModifiedRowAndCells() {
+            const rows = document.querySelectorAll('tr');
+            rows.forEach(row => row.classList.remove('highlight'));
+
+            const lastRow = rows[rows.length - 1];
+            lastRow.classList.add('highlight');
+
+            const cells = lastRow.querySelectorAll('td');
+            cells.forEach(cell => cell.classList.add('highlight'));
+        }
+
+        // Funzione per visualizzare la data e l'ora dell'ultima modifica
+        function displayLastModifiedTime() {
+            const lastModifiedTime = new Date();
+            const lastModifiedElement = document.getElementById('lastModified');
+            lastModifiedElement.textContent = lastModifiedTime.toLocaleString();
+        }
+
+        // Esegui le funzioni al caricamento della pagina
+        highlightLastModifiedRowAndCells();
+        displayLastModifiedTime();
+    </script>
+</body>
+</html>
